@@ -1,0 +1,32 @@
+.tasks-container {
+    padding: 6rem 8.5rem;
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+    padding-top: 5rem;
+
+    h2{
+        margin-bottom: 2.4rem;
+        font-size: 3.8;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    .last-tasks {
+        flex: 1;
+        overflow-y: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .completed-tasks {
+        flex: 1;
+        padding-top: 2.8rem;
+
+        .tasks-list {
+            margin-top: 28px;
+        }
+    }
+}
