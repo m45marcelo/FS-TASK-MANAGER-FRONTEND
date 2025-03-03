@@ -3,14 +3,33 @@ import axios from "axios";
 
 import "./TaskItem.scss";
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, fetchTasks }) => {
     const handleTaskDeletion = async () => {
         try {
             await axios.delete(`http://localhost:8000/tasks/${task._id}`);
+
+            await fetchTasks();
+
+            alert('A tarefa foi removida com sucesso!');
         } catch (error) {
             console.error(error)
         }
     }
+
+    const handleTaskCompletionChange = async (e) => {
+        try {
+            await axios.patch(`http://localhost:8000/tasks/${task._id}`, {
+                isCompleted: e.target.checked
+            });
+
+            await fetchTasks();
+
+            alert("A tarefa foi modificada com sucesso!")
+        } catch (error) {
+            
+        }
+    }
+
     return (
         <div className="task-item-container">
             <div className="task-description">
@@ -22,7 +41,7 @@ const TaskItem = ({ task }) => {
                     }
                 >
                     {task.description}
-                    <input type="checkbox" defaultChecked={task.isCompleted} />
+                    <input type="checkbox" defaultChecked={task.isCompleted} onChange={(e) => handleTaskCompletionChange(e)} />
                     <span
                         className={
                             task.isCompleted
