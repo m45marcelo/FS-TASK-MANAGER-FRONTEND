@@ -6,7 +6,7 @@ import axios from 'axios'
 
 import "./AddTask.scss"
 
-const AddTask = () => {
+const AddTask = ({fetcTasks}) => {
     const [task, setTask] = useState("");
 
     const onChange = (e) => {
@@ -23,6 +23,9 @@ const AddTask = () => {
                 description: task,
                 isCompleted: false
             });
+
+            await fetcTasks();
+            setTask("")
         } catch (error) {
             console.error(error)
         }
