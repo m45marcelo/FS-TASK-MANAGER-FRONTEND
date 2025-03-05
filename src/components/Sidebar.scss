@@ -5,10 +5,6 @@
     padding: 56px 28px;
     position: relative;
 
-    @media (max-width: 768px) {
-        display: none;
-    }
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -19,5 +15,9 @@
         left: 0;
         width: 100%;
         color: black;
+    }
+
+    @media (max-width: 768px) {
+        display: none;
     }
 }
